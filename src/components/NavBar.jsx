@@ -69,6 +69,9 @@ function NavBar() {
         <Link href={'/register'} className='btn btn-outline me-2'>
           Register
         </Link>
+        <Link href={'/login'} className='btn btn-outline me-2'>
+          Login
+        </Link>
         <a className='btn btn-outline'>Appoinment</a>
       </div>
     </div>
