@@ -1,5 +1,6 @@
 'use server'
 import bcrypt from 'bcrypt'
+import toast from 'react-hot-toast'
 
 import dbConnect, { collectionNameObject } from '@/lib/dbConnect'
 
@@ -23,6 +24,7 @@ export const registerUser = async (payload) => {
     const { acknowledged, insertedId } = result
     return { acknowledged, insertedId }
   }
-  // return null;
-  throw new Error('User already exists')
+  return null
+  // throw new Error('User already exists')
+  toast('User already exists')
 }

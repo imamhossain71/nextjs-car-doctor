@@ -29,8 +29,7 @@ export default function Register() {
       !formData.firstName ||
       !formData.lastName ||
       !formData.email ||
-      !formData.password ||
-      !formData.confirmPassword
+      !formData.password
     ) {
       setError('All fields are required')
       return

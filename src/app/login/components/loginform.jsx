@@ -3,6 +3,7 @@ import React from 'react'
 import { signIn } from 'next-auth/react'
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa'
 import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 
 export default function Loginform() {
   const router = useRouter()
@@ -10,18 +11,26 @@ export default function Loginform() {
     e.preventDefault()
     const email = e.target.email.value
     const password = e.target.password.value
+    toast('Submitting...')
     try {
-      await signIn('credentials', {
+      const response = await signIn('credentials', {
         email,
         password,
-        redirect: true,
+        redirect: false,
         callbackUrl: '/',
       })
+      if (response?.ok) {
+        toast.success('Login successful!')
+        router.push('/')
+        form.reset()
+      } else {
+        toast.error('Login failed: ' + (response?.error || 'Unknown error'))
+      }
       // router.push('/')
       // console.log(email, password)
     } catch (error) {
       console.log(error)
-      alert('Login failed')
+      // alert('Login failed')
     }
 
     // You can add your login logic here, e.g., call an API or use NextAuth
