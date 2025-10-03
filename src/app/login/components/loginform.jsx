@@ -1,9 +1,10 @@
 'use client'
 import React from 'react'
 import { signIn } from 'next-auth/react'
-import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa'
+
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
+import SocialLogin from './SocialLogin'
 
 export default function Loginform() {
   const router = useRouter()
@@ -78,11 +79,7 @@ export default function Loginform() {
             Forgot Password?
           </a>
           or SignIn with
-          <div className='flex flex-row gap-4 mt-5'>
-            <FaFacebook className='text-3xl text-blue-600 mx-auto cursor-pointer' />
-            <FaGoogle className='text-3xl text-red-600 mx-auto cursor-pointer' />
-            <FaGithub className='text-3xl mx-auto cursor-pointer' />
-          </div>
+          <SocialLogin />
           <div className='mt-4'>
             Already have an account?{' '}
             <a href='/register' className='text-blue-600 font-bold'>

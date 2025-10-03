@@ -72,6 +72,14 @@ function NavBar() {
       <div className='navbar-end'>
         {status == 'authenticated' ? (
           <>
+            <li>
+              <Image
+                src={session?.user?.image}
+                alt='user image'
+                height={50}
+                width={50}
+              />
+            </li>
             <li onClick={() => signOut()} className='m-2'>
               Log out
             </li>

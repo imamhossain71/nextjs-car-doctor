@@ -1,5 +1,6 @@
 'use client'
 import { registerUser } from '@/app/actions/auth/registerUser'
+import SocialLogin from '@/app/login/components/SocialLogin'
 import { useState } from 'react'
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa'
 
@@ -121,13 +122,18 @@ export default function Register() {
 
           {error && <p className='text-red-500 text-sm text-center'>{error}</p>}
 
-          <div>
+          <div className=' justify-center items-center space-y-4'>
             <button
               type='submit'
               className='group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200'
             >
               Register
             </button>
+            <h1 className='justify-center items-center'>
+              {' '}
+              or Registation With
+            </h1>
+            <SocialLogin />
           </div>
         </form>
       </div>
