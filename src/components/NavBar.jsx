@@ -3,8 +3,10 @@ import Image from 'next/image'
 import React from 'react'
 import Link from 'next/link'
 import { useSession, signIn, signOut } from 'next-auth/react'
+import { useState } from 'react'
 
 function NavBar() {
+  const [open, setOpen] = useState(false)
   const { data: session, status } = useSession()
   console.log(session)
   const navMenu = () => {
@@ -72,7 +74,46 @@ function NavBar() {
       <div className='navbar-end'>
         {status == 'authenticated' ? (
           <>
-            <li>
+            <div className='relative gap-1.5 border-2 border-gray-300 rounded-full mx-5'>
+              <button
+                onClick={() => setOpen(!open)}
+                className='flex items-center gap-4'
+              >
+                <Image
+                  src={session?.user?.image}
+                  alt='user image'
+                  height={40}
+                  width={40}
+                  className='rounded-full '
+                />
+                <span className='font-medium p-2'>Profile</span>
+              </button>
+
+              {/* Dropdown Menu */}
+              {open && (
+                <div className='absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-lg p-2'>
+                  <a
+                    href='/profile'
+                    className='flex items-center gap-2 p-2 hover:bg-gray-100 rounded'
+                  >
+                    Profile
+                  </a>
+                  <a
+                    href='/settings'
+                    className='flex items-center gap-2 p-2 hover:bg-gray-100 rounded'
+                  >
+                    Settings
+                  </a>
+                  <button
+                    onClick={() => signOut()}
+                    className='flex items-center gap-2 w-full p-2 hover:bg-gray-100 rounded text-left'
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
+            {/* <li>
               <Image
                 src={session?.user?.image}
                 alt='user image'
@@ -82,7 +123,7 @@ function NavBar() {
             </li>
             <li onClick={() => signOut()} className='m-2'>
               Log out
-            </li>
+            </li> */}
           </>
         ) : (
           <>
