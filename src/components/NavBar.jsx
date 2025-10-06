@@ -25,7 +25,7 @@ function NavBar() {
           <Link href={'/'}>Services</Link>
         </li>
         <li>
-          <Link href={'/'}>Contact</Link>
+          <Link href={'/mybooking'}>My All Bookings</Link>
         </li>
       </>
     )
