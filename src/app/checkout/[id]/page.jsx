@@ -1,4 +1,4 @@
-import CheckoutForm from '@/components/forms/CheckoutForms'
+import CheckoutForm from '@/components/forms/UpdateForms'
 import React from 'react'
 
 export default async function CheckoutPage({ params }) {
