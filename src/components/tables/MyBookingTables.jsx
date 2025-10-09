@@ -1,10 +1,13 @@
-// import DeleteBookingButton from '@/app/my-bookings/components/DeleteBookingButton'
 import DeleteBookingButtons from '@/app/mybooking/components/DeleteBookingButtons'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaRegEdit } from 'react-icons/fa'
 
 const MyAllBookings = ({ data }) => {
+  console.log('Bookings data:', data)
+
+  const bookings = Array.isArray(data) ? data : data?.data || []
+
   return (
     <div className='my-8'>
       <h1 className='text-center font-bold text-3xl my-4'>My All Bookings</h1>
@@ -23,8 +26,9 @@ const MyAllBookings = ({ data }) => {
             </tr>
           </thead>
           <tbody>
-            {data?.map((item) => {
-              return (
+            {/* ✅ নিরাপদভাবে map করা হচ্ছে */}
+            {bookings.length > 0 ? (
+              bookings.map((item) => (
                 <tr key={item._id} className='border'>
                   <td>
                     <Image
@@ -44,13 +48,19 @@ const MyAllBookings = ({ data }) => {
                       <FaRegEdit className='h-8 w-8 font-bold' />
                     </Link>
                   </td>
-
                   <td>
                     <DeleteBookingButtons id={item._id} />
                   </td>
                 </tr>
-              )
-            })}
+              ))
+            ) : (
+              // ✅ যদি data খালি হয়
+              <tr>
+                <td colSpan='8' className='text-center py-4'>
+                  No bookings found
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

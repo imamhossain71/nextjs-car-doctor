@@ -137,7 +137,7 @@ const UpdateForm = ({ data }) => {
             <input
               className='btn btn-primary btn-block'
               type='submit'
-              value='Order Confirm'
+              value='Update Confirm'
             />
           </div>
         </form>

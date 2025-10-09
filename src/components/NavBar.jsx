@@ -75,7 +75,7 @@ function NavBar() {
         {status == 'authenticated' ? (
           <>
             <div className='relative gap-1.5 border-2 border-gray-300 rounded-full mx-5'>
-              <button
+              {/* <button
                 onClick={() => setOpen(!open)}
                 className='flex items-center gap-4'
               >
@@ -87,10 +87,10 @@ function NavBar() {
                   className='rounded-full '
                 />
                 <span className='font-medium p-2'>Profile</span>
-              </button>
+              </button> */}
 
               {/* Dropdown Menu */}
-              {open && (
+              {/* {open && (
                 <div className='absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-lg p-2'>
                   <a
                     href='/profile'
@@ -111,9 +111,9 @@ function NavBar() {
                     Logout
                   </button>
                 </div>
-              )}
+              )} */}
             </div>
-            {/* <li>
+            <li>
               <Image
                 src={session?.user?.image}
                 alt='user image'
@@ -123,7 +123,7 @@ function NavBar() {
             </li>
             <li onClick={() => signOut()} className='m-2'>
               Log out
-            </li> */}
+            </li>
           </>
         ) : (
           <>
